@@ -32,7 +32,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false , unique:true|
+|name|string|null: false , unique:true , index|
 |email|string|null: false|
 |pass|string|null: false|
 
@@ -47,7 +47,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|group_name|string|null: false|
+|name|string|null: false|
 
 ### Association
 - has_many :users , through:members
