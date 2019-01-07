@@ -1,0 +1,35 @@
+.side_bar{
+  width:300px;
+  float:left;
+  margin: 20px 0px 0px 0px;
+  .user{
+    padding:0px 20px;
+    background-color:#253141;
+    line-height: 100px;
+    .user_name{
+      color: #FFFFFF;
+      font-size: 16px;
+      font-weight: bold;
+      .icon{
+      float: right;
+      }
+    }
+  }
+  .groups{
+    height: calc(100vh - 100px);
+    padding:  0 20px;
+    background-color: #2f3e51;
+    .group_header{
+      padding:  20px 0 40px;
+      color:  #FFFFFF;
+      .group_name{
+        font-size: 15px;
+        .last_message{
+          padding-top:5px;
+          padding-bottom:40px;
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}
