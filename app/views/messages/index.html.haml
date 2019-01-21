@@ -1,51 +1,24 @@
-.notification
-  チャットグループが作成されました
-
-.side_bar
-  .user
-    .user_name
-      名無しさん
-      .icon
-        %i.fa.fa-edit
-        %i.fa.fa-cog
-  .groups
-    .group_header
-      .group_name
-        Sample room
-        .last_message
-          こんばんわ
-      .group_name
-        Sample room
-        .last_message
-          こんばんわ
-
-.chat
-  .group
-    .left-header
-      .current-group-name
-        Sample room
-      .members
-        Members:
-        .member
-          名無しさん
-    .right-header
-      = link_to "Edit", "#", class:"right-header-button"
-  .chats
-    .user-name
-      名無しさん
-      .time
-        2019/xx/xx
-    .message
-      こんばんわ
-  .post
-    %input{type: "text", name: "text", placeholder: "type a text", class: "text"}
-    .post-wrapper
-      %label
-        %input{type: "file", name: "file", class: "file"}
-        %i.fa.fa-image.icon
-    %input{type: "submit", value:"send", class: "send"}
-
-
-
-
-
+.wrapper
+  = render partial: "index-notification"
+  = render partial: "index-side_bar"
+  .chat
+    .group
+      .left-header
+        .current-group-name
+          Sample room
+        .members
+          Members:
+          .member
+            名無しさん
+      .right-header
+        = link_to "Edit", "#", class:"right-header-button"
+    .chats
+      = render @messages
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
