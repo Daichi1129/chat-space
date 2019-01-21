@@ -1,17 +1,28 @@
+@import "./colors";
+
 .side_bar{
   width:300px;
   float:left;
   margin: 20px 0px 0px 0px;
-  .user{
+  .header{
     padding:0px 20px;
     background-color:#253141;
     line-height: 100px;
-    .user_name{
-      color: #FFFFFF;
+    &__name {
+      color: $white;
+      display: inline-block;
       font-size: 16px;
       font-weight: bold;
-      .icon{
+    }
+    &__lists {
+      display: inline-block;
       float: right;
+      .list {
+        display: inline-block;
+      }
+      .icon {
+        color: $white;
+        font-size: 16px;
       }
     }
   }
@@ -19,16 +30,17 @@
     height: calc(100vh - 100px);
     padding:  0 20px;
     background-color: #2f3e51;
-    .group_header{
-      padding:  20px 0 40px;
-      color:  #FFFFFF;
-      .group_name{
+    .group {
+      box-sizing: border-box;
+      padding: 20px 0 40px;
+      &__name {
+        color: $white;
         font-size: 15px;
-        .last_message{
-          padding-top:5px;
-          padding-bottom:40px;
-          font-size: 11px;
-        }
+      }
+      &__message {
+        color: $white;
+        font-size: 11px;
+        margin-top: 5px;
       }
     }
   }
