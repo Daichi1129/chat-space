@@ -39,10 +39,12 @@
       }
     }
   }
-  .chats{
+  .messages{
     height: calc(100vh - 237px);
+    width:calc(100vw - 300px);
     padding:  46px 40px 0;
     background-color: #FAFAFA;
+    overflow: scroll;
     .message {
       .upper-message {
         display: flex;
