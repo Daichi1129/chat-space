@@ -1,7 +1,7 @@
-$(function(){
+$(document).on('turbolinks:load', function() {
   function buildHTML(message) {
     var image = message.image ? `<img src="${message.image}"> ` : ""
-    var html = `<div class="message">
+    var html = `<div class="message" data-message-id = "${message.id}">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
                       ${message.user_name}
@@ -42,5 +42,39 @@ $(function(){
     .fail(function(){
       alert('内容を入力してください')
     })
+  });
+
+  $(function() {
+    $(function() {
+      if (location.pathname.match(/\/groups\/\d+\/messages/)) {
+        setInterval(update, 5000);
+      }
+    });
+    function update(){
+      if($('.message')[0]){
+        var message_id = $('.message:last').data('message-id');
+      } else {
+        return false
+      }
+
+      $.ajax({
+        url: location.href,
+        type: 'GET',
+        data: { id : message_id },
+        dataType: 'json'
+      })
+      .done(function(data){
+        if (data.length){
+        $.each(data, function(i, data){
+          var html = buildHTML(data);
+          $('.messages').append(html);
+          $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+          })
+        }
+      })
+      .fail(function(){
+        alert('自動更新に失敗しました')
+      })
+    }
   })
 });

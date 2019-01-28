@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.where('(name Like(?)) and(id != ?)', "#{params[:keyword]}%", "#{current_user.id}")
+    @users = User.where('(name Like(?)) and(id != ?)', "%#{params[:keyword]}%", "#{current_user.id}")
+    #  current_user.idではない（！）ものを検索するようにする
     respond_to do |format|
       format.json
     end
